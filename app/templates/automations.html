@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Automations | Smart Home{% endblock %}
+{% block content %}
+<h1>Automations</h1><p class="muted">Create simple state-based rules for your devices.</p>
+<div class="panel"><h2>New automation</h2>
+<form method="post" action="{{ url_for('create_automation') }}" class="form-grid">
+<input name="name" placeholder="Automation name" required>
+<select name="device_id" required>{% for device in devices %}<option value="{{ device['id'] }}">{{ device['name'] }}</option>{% endfor %}</select>
+<select name="trigger_state"><option value="1">When device is ON</option><option value="0">When device is OFF</option></select>
+<select name="action_state"><option value="1">Set ON</option><option value="0">Set OFF</option></select>
+<button class="button" type="submit">Create Rule</button>
+</form></div>
+<div class="panel"><h2>Saved rules</h2><button class="button" id="run-automations">Run enabled rules now</button><div id="automation-result" class="muted"></div>
+{% for rule in automations %}<div class="rule"><strong>{{ rule["name"] }}</strong><span>{{ rule["device_name"] }} · {% if rule["trigger_state"] %}ON{% else %}OFF{% endif %} → {% if rule["action_state"] %}ON{% else %}OFF{% endif %}</span></div>
+{% else %}<p class="muted">No automations yet.</p>{% endfor %}
+</div>
+{% endblock %}

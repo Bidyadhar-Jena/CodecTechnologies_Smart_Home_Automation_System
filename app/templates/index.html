@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}Dashboard | Smart Home{% endblock %}
+{% block content %}
+<section class="hero"><div><p class="eyebrow">SMART HOME AUTOMATION</p><h1>Control your home from one dashboard.</h1><p class="muted">Tasmota-compatible devices, local control, and simple automation.</p></div>{% if demo_mode %}<span class="badge">Demo Mode</span>{% endif %}</section>
+<section class="stats"><div class="stat"><span>Total Devices</span><strong>{{ stats.total }}</strong></div><div class="stat"><span>Online</span><strong>{{ stats.online }}</strong></div><div class="stat"><span>Active</span><strong>{{ stats.active }}</strong></div></section>
+<section class="section-head"><h2>Devices</h2><a class="button" href="{{ url_for('devices_page') }}">Manage devices</a></section>
+<div class="device-grid">
+{% for device in devices %}
+<article class="device-card"><div class="device-icon">💡</div><div class="device-main"><h3>{{ device["name"] }}</h3><p>{{ device["room"] }} · {{ device["device_type"] }}</p></div><label class="switch"><input type="checkbox" data-device-id="{{ device['id'] }}" {% if device["power_state"] %}checked{% endif %}><span></span></label></article>
+{% else %}<p>No devices found. Add one from the Devices page.</p>{% endfor %}
+</div>
+{% endblock %}
