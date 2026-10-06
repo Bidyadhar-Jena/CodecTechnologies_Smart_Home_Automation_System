@@ -37,7 +37,7 @@ Smart-Home-Automation-System/
 │   │   └── app.js                 # Frontend JavaScript
 │   │
 │   └── data/
-│       └── smart_home.db          # Created automatically when the app runs
+│       └── .gitkeep          # Created automatically when the app runs
 │
 ├── config/
 │   └── devices.example.json       # Example device configuration
