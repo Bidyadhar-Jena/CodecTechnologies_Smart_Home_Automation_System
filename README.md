@@ -129,3 +129,7 @@ The application communicates with Tasmota using its local HTTP command API.
 
 ## Licensing
 The custom application is provided under `LICENSE-APP.txt`. Tasmota is an external firmware project and is **not bundled in this repository**. See `THIRD_PARTY_NOTICES.md` for details.
+
+## Author
+
+Bidyadhar Jena
